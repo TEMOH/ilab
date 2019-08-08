@@ -8,6 +8,7 @@ const router = express.Router();
 router.post('/register', Users.isRegistered);
 
 router.post('/login', Users.isLoggedIn);
+router.post('/approve', Users.isApproved);
 
 
   

@@ -1,5 +1,6 @@
 //util function to check if a string is a valid email address
 const bcrypt = require('bcryptjs');
+const nodemailer = require('nodemailer');
 const User = require('../models/user');
 
 const checkValidation = require('../validation/validate');
@@ -15,7 +16,7 @@ try {
     if (typeof password !== 'string') {
       throw new Error('Password must be a string.');
     }
-    const user = new User({ email, password });
+    const user = new User({ email, password});
     const persistedUser = await user.save();
 
     res.status(201).json({
@@ -36,11 +37,11 @@ try {
 next();
 }
 
-static async isLoggedIn(req,res,next){
+static async isLoggedIn(req,res, next){
 
     try {
         const { email, password } = req.body;
-        if (!isEmail(email)) {
+        if (!checkValidation.isEmail(email)) {
           return res.status(400).json({
             errors: [
               {
@@ -89,6 +90,44 @@ static async isLoggedIn(req,res,next){
       }    
 }
 
+// Api for sending mail when request is approved
+  static async isApproved(req,res){
+
+    var transport = nodemailer.createTransport({
+      service:'Gmail',
+      auth:{
+        user:"adesojidaniel139@gmail.com",
+        pass:"dnasoj2000"
+      }
+    });
+
+
+    var msg = {
+      html: "<b>Hello tester</b><p>THis is working</p>",
+      createTextFromHtml:true,
+      from:"<adesojidaniel139@gmail.com>",
+      to:req.body.email,
+      subject:"Ilab Project"
+    };
+    transport.sendMail(msg, function(err){
+      if(err){
+          return res.status(400).json({
+            errors: [
+              {
+                title: 'Bad Request',
+                detail: 'There is an error in sending mail',
+                errorMessage:err.message,
+              },
+            ],
+          });
+      }
+      return res.status(200).json({
+        message:"message successfully sent",
+        detail: "Email has been sent"
+      });
+        
+    });
+  }
 }
 
 module.exports = Users;

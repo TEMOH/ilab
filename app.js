@@ -20,8 +20,9 @@ mongoose
 
 //sets up the middleware for parsing the bodies and cookies off of the requests
 app.use(bodyParser.json());
-app.use(cookieParser());
-
+app.use(bodyParser.urlencoded({
+	extended: true
+}));
 
 module.exports = { app };
 
