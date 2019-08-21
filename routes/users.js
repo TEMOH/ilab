@@ -18,7 +18,7 @@ router.post('/admin/login', Admin.isLoggedIn);
 router.post('/admin/edition', Admin.isEdition);
 router.get('/admin/find-edition', Admin.getEdition);
 router.post('/admin/find-quiz', Admin.findQuiz);
-router.delete('/admin/reject', Admin.isReject);
+router.post('/admin/reject', Admin.isReject);
 router.post('/admin/delete-quiz', Admin.delQuiz);
 router.post('/admin/delete-edition', Admin.delEdition);
 router.post('/admin/edited-edition', Admin.editedEdition);

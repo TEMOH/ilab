@@ -123,17 +123,20 @@ Applicants.find({}).then((data)=>{
 })
 }
 static async isReject(req,res,next){
-  users.remove({name:req.params.name}).then(err=>{
-     if(err){
-         res.status(404).json({
-             message:'can\'t find applicant'
-         })
-     }else{
-          res.status(200).json({
-              message:'applicant has been removed'
-          })
-     }
+  const {phonenumber}= req.body
+  try{
+    
+ Applicants.deleteOne({phonenumber}).then((data)=>{
+   
+      res.status(200).json({
+        title:"Succesful ",
+        detail:'applicant has been removed'
+    }) 
   })
+}catch(err){
+  console.log(err.message);
+  
+}
 }
 
 static async isEdition(req,res){
