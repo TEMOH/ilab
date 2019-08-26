@@ -12,18 +12,18 @@ const ApplicantSchema = new mongoose.Schema({
         minlength:1,
     },
     phonenumber:{
-        type:Number,
+        type:String,
         required:true,
         minlength:11,
     },
-    picture:{
-        type:String,
-        required:true,
-    },
-    cv:{
-        type:String,
-        required:true,
-    },
+    // picture:{
+    //     type:String,
+    //     required:true,
+    // },
+    // cv:{
+    //     type:String,
+    //     required:true,
+    // },
     stage:{
         type:String,
         required:true,
@@ -32,13 +32,22 @@ const ApplicantSchema = new mongoose.Schema({
         type:String,
         required:true,
     },
-    Reason:{
+    reason:{
         type:String,
-        required:true,
     },
-    Date:{
-        type:new Date(),
+    edition:{
+        type:String,
+    },
+    status:{
+        type:String,
+    },
+    email:{
+        type:String,
+        required:true
     }
+    // Date:{
+    //     type:new Date(),
+    // }
 });
 
 module.exports = mongoose.model('Applicants',ApplicantSchema) 

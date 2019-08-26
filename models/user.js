@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
-const uniqueValidator = require('mongoose-unique-validator');
+// const uniqueValidator = require('mongoose-unique-validator');
 const bcrypt = require('bcryptjs');
 
-const UserSchema = new mongoose.Schema({
+const AdminSchema = new mongoose.Schema({
   email: {
     type: String,
     required: true,
@@ -18,10 +18,10 @@ const UserSchema = new mongoose.Schema({
 });
 
 //this enforces emails to be unique!
-UserSchema.plugin(uniqueValidator);
+// AdminSchema.plugin(uniqueValidator);
 
 //this function will be called before a document is saved
-UserSchema.pre('save', function(next) {
+AdminSchema.pre('save', function(next) {
   let user = this;
 
   if (!user.isModified('password')) {
@@ -41,4 +41,4 @@ UserSchema.pre('save', function(next) {
     .catch((err) => next(err));
 });
 
-module.exports = mongoose.model('User', UserSchema);
+module.exports = mongoose.model('Admin', AdminSchema);
