@@ -9,6 +9,7 @@ const checkValidation = require('../validation/validate');
 
 class Users  {
 
+  // Api for Adding Admin
 static async isRegistered (req,res,next){
 try {
     const { email, password } = req.body;
@@ -40,6 +41,7 @@ try {
 next();
 }
 
+// Api for logging in
 static async isLoggedIn(req,res, next){
 
     try {
@@ -246,6 +248,8 @@ static async isLoggedIn(req,res, next){
       })
     }
   }
+
+  // Api for deleting messages
   static async deleteContact (req,res){
     const contact_id = req.body.id;
     try{
@@ -253,6 +257,45 @@ static async isLoggedIn(req,res, next){
       res.status(200).json({
         message:"Deleted"
       })
+    }
+    catch(err){
+      res.status(500).json({
+        errors:[
+          {
+            message:"An error occured",
+            Error: err.message
+          }
+        ]
+      })
+    }
+  }
+
+  // Api for forwarding & replying messages
+  static async forwardMessage(req,res){
+    try{
+      const {email,message} = req.body;
+      if (!checkValidation.isEmail(email)) {
+        throw new Error('Email must be a valid email address.');
+      }
+      var transport = nodemailer.createTransport({
+        service:'Gmail',
+        auth:{
+          user:"youremail@gmail", // replace with your email
+          pass:"yourpasswwword",  //replace with your password 
+        }
+      }); 
+      var msg = await transport.sendMail({
+        html: message,
+        createTextFromHtml:true,
+        from:"adesojidaniel139@gmail.com",
+        to:email,
+        subject:"Ilab Project"
+      });
+      res.status(200).json({
+        title: 'message have been sent',
+        detail: "An email has been sent to"+email
+      });
+
     }
     catch(err){
       res.status(500).json({
