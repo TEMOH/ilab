@@ -23,8 +23,7 @@ app.use(bodyParser.urlencoded({
 	extended: true
 }));
 
-module.exports = { app };
-
+// module.exports = { app };
 //other imports
 const usersRoute = require('./routes/users');
 
