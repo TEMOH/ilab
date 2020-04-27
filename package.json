@@ -1,12 +1,12 @@
 {
-  "name": "Login_Api",
+  "name": "login_api",
   "version": "1.0.0",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start":"node app.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "node app"
+    "build": "node app.js"
   },
   "keywords": [],
   "author": "",
@@ -19,5 +19,14 @@
     "mongoose": "^5.6.7",
     "mongoose-unique-validator": "^2.0.3",
     "nodemailer": "^6.3.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TEMOH/ilab.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TEMOH/ilab/issues"
+  },
+  "homepage": "https://github.com/TEMOH/ilab#readme"
 }
