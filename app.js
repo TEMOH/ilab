@@ -32,6 +32,6 @@ app.use('/', usersRoute);
 
 
 
-app.listen(3001, () =>{
+app.listen(3001 || process.env.PORT, () =>{
     console.log("My app is working at port 3001" + new Date());
 });
