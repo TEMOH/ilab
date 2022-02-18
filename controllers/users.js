@@ -2,23 +2,6 @@ const Applicants = require('../models/applicants');
 
 class applicants{
     static async isApplied(req,res,next){
-    
-      // if(belated){
-    
-      // }else{
-        // let picture = req.files.picture;
-        // let cv = req.files.cv;
-        // let pictureName = Date.now()+ `-` +picture.name;
-        // let cvName = Date.now()+ `-` +cv.name;
-        // if(!isEmpty(req.files)){
-        //     picture.mv(`./public/uploads/photos` + pictureName,(err)=>{
-        //         if(err) return err;
-        //     })  
-        //     cv.mv(`./public/uploads/cv` + cvName,(err)=>{
-        //       if(err) return err;
-        //   }) 
-            
-        // }
         try{
           let applicants= new Applicants({
               firstname: req.body.firstname,
