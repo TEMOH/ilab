@@ -119,8 +119,8 @@ static async isLoggedIn(req,res, next){
     const transport = nodemailer.createTransport({
       service:'Gmail',
       auth:{
-        user:"adesojidaniel139@gmail.com",
-        pass:"dnasoj2000"
+        user:"***@gmail.com",
+        pass:"***"
       }
     });
     var msg = await transport.sendMail( {
