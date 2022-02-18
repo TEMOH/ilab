@@ -126,8 +126,8 @@ static async isLoggedIn(req,res, next){
     var msg = await transport.sendMail( {
       html: "<b>Hello tester</b><p>Accepted</p>",
       createTextFromHtml:true,
-      from:"adesojidaniel139@gmail.com",
-      to:"lekass205@gmail.com",
+      from:"***@gmail.com",
+      to:"***@gmail.com",
       subject:"Ilab Project"
     });
     res.status(200).json({
@@ -173,14 +173,14 @@ static async isLoggedIn(req,res, next){
       var transport = nodemailer.createTransport({
         service:'Gmail',
         auth:{
-          user:"adesojidaniel139@gmail.com",
-          pass:"dnasoj2000"
+          user:"***@gmail.com",
+          pass:"***"
         }
       }); 
       var msg = await transport.sendMail({
         html: "<b>Hello tester</b><p>Rejected</p>",
         createTextFromHtml:true,
-        from:"adesojidaniel139@gmail.com",
+        from:"***@gmail.com",
         to:email,
         subject:"Ilab Project"
       });
